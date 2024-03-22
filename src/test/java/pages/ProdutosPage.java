@@ -8,9 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProdutosPage {
     @AndroidFindBy(accessibility = "conhecaTodosOsNossoCursos")
-    public WebElement txtTituloProdutos;
+    private WebElement txtTituloProdutos;
 
     public ProdutosPage(){
+
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()), this);
     }
 
