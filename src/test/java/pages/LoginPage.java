@@ -16,9 +16,8 @@ public class LoginPage {
     @AndroidFindBy(accessibility = "btnEntrar")
     public WebElement btnEntrar;
 
-
-
     public LoginPage(){
+
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()), this);
     }
 
