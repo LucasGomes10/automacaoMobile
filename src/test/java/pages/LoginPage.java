@@ -6,7 +6,7 @@ import maps.LoginMaps;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends LoginMaps {
-    public LoginPage(){
+    public LoginPage() {
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getAppiumDriver()), this);
     }
 
@@ -16,15 +16,26 @@ public class LoginPage extends LoginMaps {
         btnEntrar.click();
     }
 
-    public String getTxtEmailError(){
-        return txtEmailError.getText();
+    public String getTxtEmailError() {
+
+        try {
+            return txtEmailError.getText();
+        } catch (Exception e) {
+            return txtAuthEmailError.getText();
+        }
+
     }
 
-    public String getTxtPasswordError(){
-        return txtPasswordError.getText();
+    public String getTxtPasswordError() {
+        try {
+            return txtPasswordError.getText();
+        } catch (Exception e) {
+            return txtAuthPasswordError.getText();
+        }
     }
 
-    public void clickLinkNaoTemConta(){
+    public void clickLinkNaoTemConta() {
+
         linkNaoTemConta.click();
     }
 }
