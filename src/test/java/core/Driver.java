@@ -1,7 +1,11 @@
 package core;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.options.BaseOptions;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -24,5 +28,14 @@ public class Driver {
         options.setCapability("appActivity", "br.com.chronosacademy.MainActivity");
 
         appiumDriver = new AppiumDriver(new URL(url), options);
+    }
+
+    public static void swipe(int left, int top, String direction, double percent) {
+        Dimension dimension = Driver.getAppiumDriver().manage().window().getSize();
+
+        ((JavascriptExecutor) Driver.getAppiumDriver()).executeScript("mobile: scrollGesture",
+                ImmutableMap.of("left", left, "top", top, "width",
+                        dimension.getWidth() / 2, "height", dimension.getHeight() / 2, "direction",
+                        direction, "percent", percent));
     }
 }
