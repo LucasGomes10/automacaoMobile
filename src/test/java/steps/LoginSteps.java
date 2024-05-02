@@ -1,6 +1,7 @@
 package steps;
 
 import core.Driver;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.pt.Dado;
@@ -19,7 +20,11 @@ public class LoginSteps {
 
     @Before
     public void inicializaTeste() throws MalformedURLException {
-        Driver.inicializaDriver();
+        Driver.inicializaDriverPerfecto();
+    }
+    @After
+    public void finalizaTeste(){
+        Driver.getAppiumDriver().quit();
     }
 
     @DataTableType(replaceWithEmptyString = "[blank]")
